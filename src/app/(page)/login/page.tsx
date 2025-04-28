@@ -4,13 +4,13 @@ import React, { useState, useEffect } from 'react';
 import { Box, TextField, Button, Typography, CircularProgress, Divider } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../redux/store';
-import { login } from '@/app/redux/slices/authSlice';
+import { login ,fetchProfile } from '@/app/redux/slices/authSlice';
 import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
-import './login.css'; 
+import './login.css';
 
 const LoginPage = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -22,6 +22,13 @@ const LoginPage = () => {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
 
+
+  useEffect(() => {
+    if (token) {
+      dispatch(fetchProfile());
+      router.push('/');
+    }
+  }, [token, dispatch, router]);
 
 
   useEffect(() => {

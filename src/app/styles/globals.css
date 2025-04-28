@@ -1,0 +1,12 @@
+.wide-desktop{
+  width:100%;
+  max-width:1152px;
+  margin-left:auto;
+  margin-right:auto
+}
+
+body{
+  margin:0px;
+  padding:0px;
+  background-color:#F7F6F5
+}
