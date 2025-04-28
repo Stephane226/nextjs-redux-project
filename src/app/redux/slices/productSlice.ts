@@ -3,8 +3,12 @@ import axios from 'axios';
 import { ProductType } from '../Interfaces/Products';
 import { PacketType } from '../Interfaces/Packets';
 
+//base url for fetchss..
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
 export const getProducts = createAsyncThunk('products/getProducts', async () => {
-  const res = await axios.get('https://96318a87-0588-4da5-9843-b3d7919f1782.mock.pstmn.io/packets-and-products');
+
+  const res = await axios.get(`${API_BASE_URL}/packets-and-products`);
   return res.data.data
 });
 
