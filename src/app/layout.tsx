@@ -3,6 +3,7 @@ import { ToastContainer } from 'react-toastify';
 import Header from './components/header/Header';
 import "./styles/globals.css";
 import Footer from './components/footer/Footer';
+import DataInitializer from './utils/dataInitializer/dataInitializer';
 
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -13,6 +14,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Header />
           {children}
           <Footer/>
+          <DataInitializer />
         </Providers>
         <ToastContainer />
       </body>

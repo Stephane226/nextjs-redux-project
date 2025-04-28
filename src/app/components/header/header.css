@@ -1,0 +1,18 @@
+.desktop-navbar {
+  display: flex;
+}
+
+.mobile-navbar {
+  display: none;
+}
+
+/* Responsive :) */
+@media (max-width: 768px) {
+  .desktop-navbar {
+    display: none !important;
+  }
+
+  .mobile-navbar {
+    display: flex !important;
+  }
+}
