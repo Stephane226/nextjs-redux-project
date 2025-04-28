@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 //base url for fetchss..
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL_VERIFY_PRICE;
 
 interface VerifyPacketPriceResponse {
   success: boolean;
@@ -22,14 +22,16 @@ const initialState: PacketPriceState = {
 
 // Async thunk for verifying packet price ...
 export const verifyPacketPrice = createAsyncThunk(
-  'products/verifyPacketPrice',
+  '/verifyPacketPrice',
   async (
     { packetData, token }: { packetData: { packet: { _id: string; count: number }[]; totalPrice: number }; token: string },
     { rejectWithValue }
   ) => {
     try {
+    
       const response = await axios.post(
         `${API_BASE_URL}/verify-packet-price`,
+
         packetData,
         {
           headers: {
@@ -37,7 +39,9 @@ export const verifyPacketPrice = createAsyncThunk(
           },
         }
       );
+      console.log(response.data)
       return response.data;
+
     } catch (error: any) {
       return rejectWithValue(error.response?.data?.message || 'Something went wrong');
     }
