@@ -29,9 +29,10 @@ const LoginPage = () => {
   useEffect(() => {
     if (token) {
       dispatch(fetchProfile());
-      router.push('/');
-    }
+      router.push('/verify-price');
+    } 
   }, [token, dispatch, router]);
+
 
   useEffect(() => {
     if (error) toast.error(error);
