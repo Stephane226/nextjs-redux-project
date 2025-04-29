@@ -37,7 +37,7 @@ const Header = () => {
         display="flex"
         alignItems="center"
         justifyContent="space-between"
-        px={4}
+      
         py={2}
         sx={{ backgroundColor: '#F7F6F5', position: 'relative' }}
          >

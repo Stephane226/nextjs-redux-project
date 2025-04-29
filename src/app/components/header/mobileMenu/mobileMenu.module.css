@@ -32,11 +32,12 @@
 
 
 .mobileHeader{
-  display: flex;
-  align-items: center;
-  width: calc(100% - 32px);
   justify-content: space-between;
-  padding:  16px;
+    align-items: center;
+    width: calc(100%);
+    padding: 16px 0px;
+    display: flex
+;
 
 }
 
