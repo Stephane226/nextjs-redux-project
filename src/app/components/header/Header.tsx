@@ -75,18 +75,18 @@ const Header = () => {
         </Box>
       </Box>
  </div>
-      {/* Dropdown (Desktop) */}
-      {open && (
+      {/* Dropdown (Desktop)   */}
+      {  open &&(
         <Box
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
           sx={{
             position: 'absolute',
-            top: "73px",
+            top: "50px",
             width: "100%",
             left: 0,
-            backgroundColor: 'white',
-            boxShadow: 3,
+            backgroundColor: '#f7f6f5',
+            boxShadow: "0 3px 5px rgba(0, 0, 0, 0.1)",
             borderRadius: 2,
             display: 'flex',
             gap: 2,

@@ -34,7 +34,12 @@ export default function MenuContent() {
           {products.products.map((product) => (
             <Box key={product._id} className="product-card">
               <img src={product.image} alt={product.title} className="product-image" loading="lazy" />
-              <Typography className="product-title">{product.title}</Typography>
+              <Box display="flex" alignItems="center" justifyContent="space-between" p={1} borderRadius={2} bgcolor="#f7f6f5"  width="100%">
+                <Typography sx={{ fontSize: 14, fontWeight: 500, color: '#2e2e2e' }}>
+                  {product.title}
+                </Typography>
+                <span style={{ fontSize: 30, color: '#2e2e2e' }}>›</span>
+              </Box>
             </Box>
           ))}
         </Box>
@@ -51,7 +56,14 @@ export default function MenuContent() {
           {products.packets.map((product) => (
             <Box key={product._id} className="packet-card">
               <img src={product.image} alt={product.title} className="product-image" loading="lazy" />
-              <Typography className="product-title">{product.title}</Typography>
+              <Box display="flex" alignItems="center" justifyContent="space-between" p={1} borderRadius={2} bgcolor="#f7f6f5"  width="100%">
+                <Typography sx={{ fontSize: 14, fontWeight: 500, color: '#2e2e2e' }}>
+                  {product.title}
+                </Typography>
+                <span style={{ fontSize: 30, color: '#2e2e2e' }}>›</span>
+              </Box>
+
+
             </Box>
           ))}
         </Box>
