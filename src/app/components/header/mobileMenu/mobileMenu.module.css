@@ -1,14 +1,13 @@
 .menuHeader {
   font-weight: bold;
-  color: rgb(255, 0, 0);
-  margin-left: 16px;
-  margin-top: 8px;
+  color: rgb(181 33 41);
   font-size:23px;
 }
 
 .menuDrawer {
-  width: 300px;
+  width: calc(100% - 32px);
   padding: 16px;
+    background-color: transparent !important
 }
 
 .menuTitle {
@@ -38,6 +37,7 @@
   width: calc(100% - 32px);
   justify-content: space-between;
   padding:  16px;
+
 }
 
 .iconWrapper {
@@ -45,4 +45,20 @@
   height: 40px !important;
     border-radius: 64px !important;
     background-color: rgb(231, 231, 231) !important;
+    margin-left:10px !important
+}
+
+
+.customizebtn{
+  width:calc(100% - 20px);
+  letter-spacing: -0.01em;
+  background-color: rgb(181, 33, 41);
+  height: 40px;
+  color:white;
+  border-radius:64px;
+  text-align:center;
+  font-size: 0.875rem;
+  display:flex;
+  justify-content: center;
+  align-items: center;  
 }

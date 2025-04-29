@@ -19,66 +19,80 @@ import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PersonIcon from '@mui/icons-material/Person';
-
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../redux/store';
 import styles from './mobileMenu.module.css';
+import Link from 'next/link';
+
 
 interface SubmenuState {
   [key: string]: boolean;
 }
 
 const MobileMenu: React.FC = () => {
-  const [open, setOpen] = useState<boolean>(false);
+  const [open, setOpen] = useState(false);
   const [submenu, setSubmenu] = useState<SubmenuState>({
-    pakets: false,
+    products: false,
+    packets: false,
   });
 
-  const toggleDrawer = () => {
-    setOpen(!open);
-  };
+  const { products, loading, error } = useSelector((state: RootState) => state.products);
 
-  const toggleSubmenu = (key: string) => {
-    setSubmenu((prev) => ({ ...prev, [key]: !prev[key] }));
-  };
+  const toggleDrawer = () => setOpen(!open);
+  const toggleSubmenu = (key: string) => setSubmenu(prev => ({ ...prev, [key]: !prev[key] }));
 
   return (
     <div className={styles.mobileHeader}>
-      <Typography className={styles.menuHeader}>beije.</Typography>
+      <span className={styles.menuHeader}>beije.</span>
 
-      <Drawer anchor="left" open={open} onClose={toggleDrawer}>
+      <Drawer
+        anchor="top"
+        open={open}
+        onClose={toggleDrawer}
+        PaperProps={{
+          sx: {
+            mt: '64px',
+            minHeight: 'calc(50% - 74px)',
+
+          },
+        }}
+      >
         <Box className={styles.menuDrawer} role="presentation">
-          <Typography className={styles.menuTitle}>Ürünler</Typography>
-
           <List>
-
+            {/* Menstrual Products */}
             <ListItem disablePadding>
-              <ListItemButton onClick={() => toggleSubmenu('pakets')}>
-                <ListItemText primary="Paketler" />
-                {submenu.pakets ? <ExpandLess /> : <ExpandMore />}
+              <ListItemButton onClick={() => toggleSubmenu('products')}>
+                <ListItemText primary="Ürünler" />
+                {submenu.products ? <ExpandLess /> : <ExpandMore />}
               </ListItemButton>
             </ListItem>
 
-            <Collapse in={submenu.pakets} timeout="auto" unmountOnExit>
+            <Collapse in={submenu.products} timeout="auto" unmountOnExit>
               <List component="div" disablePadding>
-                {[
-                  'Popüler Paketler',
-                  'Ped Paketleri',
-                  'Günlük Ped Paketleri',
-                  'Tampon Paketleri',
-                  'Deneme Paketi',
-                  'Özel Paketler',
-                ].map((text, index) => (
-                  <ListItem key={index} sx={{ pl: 4 }} disablePadding>
+                {!loading && !error && products.products.map((product) => (
+                  <ListItem key={product._id} sx={{ pl: 4 }} disablePadding>
                     <ListItemButton>
-                      <ListItemText
-                        primary={
-                          <Typography>
-                            {text}
-                            {text === 'Özel Paketler' && (
-                              <span className={styles.badge}>Yeni</span>
-                            )}
-                          </Typography>
-                        }
-                      />
+                      <ListItemText primary={product.title} />
+                    </ListItemButton>
+                  </ListItem>
+                ))}
+              </List>
+            </Collapse>
+
+            {/* Packets */}
+            <ListItem disablePadding>
+              <ListItemButton onClick={() => toggleSubmenu('packets')}>
+                <ListItemText primary="Paketler" />
+                {submenu.packets ? <ExpandLess /> : <ExpandMore />}
+              </ListItemButton>
+            </ListItem>
+
+            <Collapse in={submenu.packets} timeout="auto" unmountOnExit>
+              <List component="div" disablePadding>
+                {!loading && !error && products.packets.map((packet) => (
+                  <ListItem key={packet._id} sx={{ pl: 4 }} disablePadding>
+                    <ListItemButton>
+                      <ListItemText primary={packet.title} />
                     </ListItemButton>
                   </ListItem>
                 ))}
@@ -87,14 +101,12 @@ const MobileMenu: React.FC = () => {
 
             <Divider sx={{ my: 1 }} />
 
-
+            {/* Static Links */}
             {[
-              'beije Ped',
-              'beije Günlük Ped',
-              'beije Tampon',
-              'beije Kap',
-              'Isı Bandı',
-              'beije Cycle Essentials',
+              'Biz Kimiz?',
+              'Bağış Kültürü',
+              'Regl Testi!',
+              'Kendi Paketini Oluştur',
             ].map((item, index) => (
               <ListItem key={index} disablePadding>
                 <ListItemButton>
@@ -103,25 +115,30 @@ const MobileMenu: React.FC = () => {
               </ListItem>
             ))}
           </List>
+
+          <Link href="/verify-price" passHref>
+            <span className={styles.customizebtn}>
+              Kendi ürünlerini özelleştir
+            </span>
+          </Link>
+
         </Box>
       </Drawer>
 
-
+      {/* Icons */}
       <Box className={styles.rightIcons}>
-
-
         <IconButton className={styles.iconWrapper}>
           <Badge badgeContent={1} color="success">
-            <ShoppingCartIcon sx={{ fontSize: 32 }} />
+            <ShoppingCartIcon sx={{ fontSize: 28 }} />
           </Badge>
         </IconButton>
 
         <IconButton className={styles.iconWrapper}>
-          <PersonIcon sx={{ fontSize: 32 }} />
+          <PersonIcon sx={{ fontSize: 28 }} />
         </IconButton>
 
-        <IconButton onClick={toggleDrawer} size="large">
-          <MenuIcon />
+        <IconButton onClick={toggleDrawer}>
+          <MenuIcon sx={{ fontSize: 32 }} />
         </IconButton>
       </Box>
     </div>
