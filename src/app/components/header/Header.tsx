@@ -8,6 +8,7 @@ import React, { useState } from 'react';
 import MenuContent from '../menuExtended/menuContent';
 import './header.css';
 
+import MobileMenu from './mobileMenu/MobileMenu';
 const Header = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -28,6 +29,7 @@ const Header = () => {
 
   return (
     <div className="header-container">
+       <div className="header-desktop">
       <Box
         display="flex"
         alignItems="center"
@@ -67,8 +69,8 @@ const Header = () => {
           </IconButton>
         </Box>
       </Box>
-
-      {/* Dropdown (Desktop) */}
+      </div>
+      {/* Dropdown (Desktop)
       {open && (
         <Box
           onMouseEnter={handleMouseEnter}
@@ -89,8 +91,8 @@ const Header = () => {
           <MenuContent />
         </Box>
       )}
-
-      {/* Drawer (Mobile) */}
+ */}
+      {/* Drawer (Mobile) 
       <Drawer
         anchor="top"
         open={mobileOpen}
@@ -112,7 +114,9 @@ const Header = () => {
             ))}
           </List>
         </Box>
-      </Drawer>
+      </Drawer>*/}
+
+      <MobileMenu />
     </div>
   );
 };

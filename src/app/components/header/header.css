@@ -15,4 +15,8 @@
   .mobile-navbar {
     display: flex !important;
   }
+
+  .header-desktop{
+    display:none
+  }
 }
