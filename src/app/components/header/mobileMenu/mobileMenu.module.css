@@ -62,3 +62,9 @@
   justify-content: center;
   align-items: center;  
 }
+
+@media (min-width: 900px) {
+.mobileHeader{
+  display:none 
+}
+}

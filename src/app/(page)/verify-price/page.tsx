@@ -101,10 +101,10 @@ const PacketCreationPage = () => {
         {/* Sol Panel */}
         <Box className={styles.leftPanel}>
           <Box className={styles.header}>
-            <Typography variant="h5">Kendi Paketini Oluştur</Typography>
-            <Typography variant="body2" className={styles.howItWorks}>
+            <h1 className={styles.packHead}>Kendi Paketini Oluştur</h1>
+            <span  className={styles.howWork}>
               Nasıl Çalışır?
-            </Typography>
+            </span>
           </Box>
 
           <p className={styles.pText}>
@@ -139,7 +139,7 @@ const PacketCreationPage = () => {
               />
             </Tabs>
 
-            <CardContent>
+            <CardContent sx={{ padding:"0px !important"}}>
               <Stack spacing={2} mt={2}>
                 {currentProducts.map((product) => (
                   <Box key={product._id} className={styles.collapsBlock}>
@@ -148,7 +148,7 @@ const PacketCreationPage = () => {
                       onClick={() => handleSectionToggle(product._id)}
                     >
                       <Typography fontWeight="bold">{product.title}</Typography>
-                      {openSections[product._id] ? <ExpandLess /> : <ExpandMore />}
+                      {openSections[product._id] ? <ExpandLess sx={{fontSize:"40px"}} /> : <ExpandMore sx={{fontSize:"40px"}} />}
                     </Box>
 
                     {/* Alt Ürünler */}
@@ -163,7 +163,7 @@ const PacketCreationPage = () => {
                       {product.subProducts?.map((subProduct) => (
                         <Box key={subProduct._id} className={styles.subProduct}>
                           <Typography>{subProduct.name}</Typography>
-                          <Box display="flex" alignItems="center">
+                          <Box display="flex" alignItems="center" className={styles.addRemoverBox}>
                             <IconButton onClick={(e) => { e.stopPropagation(); handleQuantityChange(subProduct, -1, product.title); }}>
                               <Remove />
                             </IconButton>
@@ -187,18 +187,21 @@ const PacketCreationPage = () => {
         {/* Sağ Panel */}
         <div className={styles.rightPanel}>
           <Box className={styles.rightPanelCnt}>
+            <div className={styles.rightPanelCntHead}> 
             <Typography variant="h5" className={styles.packageTitle}>Paketin</Typography>
+            <span>  ● 2 Ayda bir gönderim </span>
+            </div>
 
             <Typography variant="body2" className={styles.description}>
               Kişisel ihtiyacına yönelik istediğin miktarda ped, günlük ped, tampon veya destekleyici ürünler ekleyerek kendine özel paket oluşturabilirsin.
             </Typography>
 
-            <Card className={styles.cartCard}>
-              <CardContent>
+            <div className={styles.CardContent}>
+              <div>
                 {selectedProducts.length === 0 ? (
                   <Typography>Henüz ürün seçilmedi.</Typography>
                 ) : (
-                  <Stack spacing={2}>
+                  <div>
                     {Object.entries(
                       selectedProducts.reduce((acc, item) => {
                         if (!acc[item.category]) {
@@ -208,7 +211,7 @@ const PacketCreationPage = () => {
                         return acc;
                       }, {} as { [key: string]: SelectedProduct[] })
                     ).map(([category, items]) => (
-                      <Box key={category} sx={{ borderBottom: '1px solid #eee', pb: 2 }}>
+                      <Box key={category}  className={styles.cartCard}>
                         <Box display="flex" alignItems="center" justifyContent="space-between">
                           <Typography fontWeight="bold" fontSize="18px">{category}</Typography>
                           <IconButton
@@ -224,24 +227,22 @@ const PacketCreationPage = () => {
                         <Stack spacing={1} mt={1}>
                           {items.map(subItem => (
                             <Box key={subItem._id} display="flex" alignItems="center" justifyContent="space-between">
-                              <Box>
-                                <Typography fontSize="14px">{subItem.name}</Typography>
-                                <Typography variant="body2" fontSize="13px" color="#7D7D7D">
-                                  {subItem.quantity} adet x {subItem.price}₺
-                                </Typography>
+                              <Box className={styles.flexdPrice}>
+                                <Typography fontSize="14px">  {subItem.quantity } {subItem.name}</Typography>
+                                <span  className={styles.priced}>
+                                 {subItem.price}₺
+                                </span>
                               </Box>
-                              <Typography fontWeight="bold" fontSize="14px">
-                                {subItem.quantity * subItem.price}₺
-                              </Typography>
+                            
                             </Box>
                           ))}
                         </Stack>
                       </Box>
                     ))}
-                  </Stack>
+                  </div>
                 )}
-              </CardContent>
-            </Card>
+              </div>
+            </div>
 
             {/* Toplam price ... */}
             {selectedProducts.length > 0 && (
@@ -253,14 +254,16 @@ const PacketCreationPage = () => {
 
             {/* Sepete Ekle btm... */}
             <Button
-              variant="contained"
-              fullWidth
-              className={styles.addToCartButton}
-              disabled={selectedProducts.length === 0}
-              onClick={handleVerifyAndAddToCart}
-            >
-              Sepete Ekle ({totalPrice}₺)
-            </Button>
+  className={
+    selectedProducts.length === 0
+      ? styles.addToCartButtonDisabled
+      : styles.addToCartButton
+  }
+  disabled={selectedProducts.length === 0}
+  onClick={handleVerifyAndAddToCart}
+>
+  Sepete Ekle ({totalPrice}₺)
+</Button>
           </Box>
         </div>
 

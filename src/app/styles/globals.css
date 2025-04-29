@@ -10,3 +10,10 @@ body{
   padding:0px;
   background-color:#F7F6F5
 }
+
+
+@media (max-width: 765px) {
+  .wide-desktop{
+    max-width:90%;
+}
+}

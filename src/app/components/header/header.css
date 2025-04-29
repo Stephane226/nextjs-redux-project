@@ -7,7 +7,7 @@
 }
 
 /* Responsive :) */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .desktop-navbar {
     display: none !important;
   }
@@ -19,4 +19,14 @@
   .header-desktop{
     display:none
   }
+}
+
+
+
+.iconWrapper {
+  padding: 8px !important;
+  height: 40px !important;
+    border-radius: 64px !important;
+    background-color: rgb(231, 231, 231) !important;
+    margin-left:10px !important
 }

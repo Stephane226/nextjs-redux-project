@@ -1,17 +1,20 @@
 'use client';
 
-import { Box, Typography, IconButton, Button, Drawer, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
+import { Box, Typography, IconButton, Button, Badge } from '@mui/material';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PersonIcon from '@mui/icons-material/Person';
 import MenuIcon from '@mui/icons-material/Menu';
 import React, { useState } from 'react';
 import MenuContent from '../menuExtended/menuContent';
 import './header.css';
+import { RootState } from '../../redux/store';
+import { useSelector } from 'react-redux';
 
 import MobileMenu from './mobileMenu/MobileMenu';
 const Header = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const basketCount = useSelector((state: RootState) => state.basket.count);
 
   const handleMouseEnter = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -28,15 +31,15 @@ const Header = () => {
   const open = Boolean(anchorEl);
 
   return (
-    <div className="header-container">
-       <div className="header-desktop">
+    <div className="header-container wide-desktop">
+       <div className="header-container">
       <Box
         display="flex"
         alignItems="center"
         justifyContent="space-between"
         px={4}
         py={2}
-        sx={{ borderBottom: '1px solid #eee', backgroundColor: '#F7F6F5', position: 'relative' }}
+        sx={{ backgroundColor: '#F7F6F5', position: 'relative' }}
       >
         {/* Logo */}
         <Typography variant="h6" color="orange" sx={{ fontWeight: 'bold' }}>
@@ -58,19 +61,21 @@ const Header = () => {
 
         {/* Mobile Navbar (Menu + Icons) */}
         <Box className="mobile-navbar" display="flex" alignItems="center" gap={2}>
-          <IconButton>
-            <ShoppingCartIcon />
-          </IconButton>
-          <IconButton>
-            <PersonIcon />
-          </IconButton>
-          <IconButton onClick={toggleDrawer(true)}>
-            <MenuIcon />
-          </IconButton>
+        <IconButton className="">
+          <Badge badgeContent={basketCount} color="success">
+            <ShoppingCartIcon sx={{ fontSize: 28 }} />
+          </Badge>
+        </IconButton>
+
+        <IconButton className="">
+          <PersonIcon sx={{ fontSize: 28 }} />
+        </IconButton>
+
+
         </Box>
       </Box>
-      </div>
-      {/* Dropdown (Desktop)
+ </div>
+      {/* Dropdown (Desktop) */}
       {open && (
         <Box
           onMouseEnter={handleMouseEnter}
@@ -91,32 +96,13 @@ const Header = () => {
           <MenuContent />
         </Box>
       )}
- */}
-      {/* Drawer (Mobile) 
-      <Drawer
-        anchor="top"
-        open={mobileOpen}
-        onClose={toggleDrawer(false)}
-      >
-        <Box
-          sx={{ width: "100%", height: "auto" }}
-          role="presentation"
-          onClick={toggleDrawer(false)}
-          onKeyDown={toggleDrawer(false)}
-        >
-          <List>
-            {['Tüm Ürünler', 'Biz Kimiz?', 'Bağış Kültürü', 'Regl Testi!', 'Kendi Paketini Oluştur'].map((text) => (
-              <ListItem key={text} disablePadding>
-                <ListItemButton>
-                  <ListItemText primary={text} />
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
-        </Box>
-      </Drawer>*/}
 
+ 
       <MobileMenu />
+
+
+
+
     </div>
   );
 };

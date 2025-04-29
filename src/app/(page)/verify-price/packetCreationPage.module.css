@@ -44,19 +44,19 @@
 }
 
 .tipCard {
-  background-color: #ECF1CF !important;
+  background-color: #ecf1cf !important;
   border-radius: 8px;
   padding: 20px 16px;
   display: flex;
   flex-direction: row;
   height: 66px;
-  align-items:center;
-  box-shadow:none !important
+  align-items: center;
+  box-shadow: none !important;
 }
 
-.lgBlock{
-  background-color:transparent !important;
-  box-shadow:none !important
+.lgBlock {
+  background-color: transparent !important;
+  box-shadow: none !important;
 }
 
 .tipText {
@@ -92,28 +92,20 @@
   text-align: right;
 }
 
-.addToCartButton {
-  margin-top: 24px;
-  padding: 12px;
+.collapsBlock {
+  background-color: white;
   border-radius: 16px;
+  padding: 10px;
 }
 
-.collapsBlock{
-  background-color:white;
-  border-radius:16px;
-  padding:10px
+.pText {
+  color: #00000099;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 160%;
+  letter-spacing: -1%;
+  margin: 20px 0px;
 }
-
-.pText{
-color:#00000099;
-font-weight: 400;
-font-size: 16px;
-line-height: 160%;
-letter-spacing: -1%;
-margin:20px 0px
-}
-
-
 
 /* */
 
@@ -128,7 +120,7 @@ margin:20px 0px
   gap: 16px;
 }
 
-.rightPanelCnt{
+.rightPanelCnt {
   width: 100%;
   max-width: 400px;
   background-color: #ffffff;
@@ -146,21 +138,23 @@ margin:20px 0px
 
 .description {
   font-size: 14px;
-  color: #7D7D7D;
+  color: #7d7d7d;
   margin-top: 8px;
 }
 
 .cartCard {
-  background-color: #F9F9F9;
-  border: 1px solid #E0E0E0;
+  border: 1px solid #e0e0e0;
   border-radius: 12px;
+  margin-top: 20px;
 }
 
+.CardContent {
+}
 .cartItem {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border:1px solid red
+  border: 1px solid red;
 }
 
 .totalSection {
@@ -174,16 +168,103 @@ margin:20px 0px
 }
 
 .addToCartButton {
-  background-color: #212121;
-  color: #ffffff;
-  border-radius: 9999px;
-  padding: 16px 0;
-  font-weight: bold;
-  font-size: 16px;
-  margin-top: 16px;
-  text-transform: none;
+  margin-top: 24px;
+  padding: 12px !important;
+  background-color: #343131 !important;
+  width: 390px !important;
+  max-width:100%;
+  height: 48px !important;
+  border-radius: 64px !important;
+  color: white !important;
+  text-transform: lowercase !important;
 }
 
+.addToCartButtonDisabled{
+  margin-top: 24px;
+  padding: 12px !important;
+  background-color: #0000001F !important;
+  width: 390px !important;
+  height: 48px !important;
+  border-radius: 64px !important;
+  text-transform: lowercase  !important;
+  color: rgba(34, 34, 34, 0.308) !important;
+}
+
+
 .addToCartButton:hover {
-  background-color: #000;
+  background-color: #474444 !important;
+}
+
+.packHead {
+  font-weight: 500;
+  font-size: 28px;
+  line-height: 130%;
+  letter-spacing: -3%;
+}
+
+.howWork {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+  letter-spacing: -1.5%;
+  color: #343131;
+}
+
+.rightPanelCntHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rightPanelCntHead span {
+  background-color: #d2e7e0;
+
+  width: 148px;
+
+  padding-top: 4px;
+  padding-right: 12px;
+  padding-bottom: 4px;
+  padding-left: 12px;
+  border-radius: 8px;
+}
+
+.flexdPrice {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.priced {
+  color: #343131;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: -1%;
+}
+
+.addRemoverBox{
+  border: 1px solid rgba(128, 128, 128, 0.397);
+  width: 125px;
+  border-radius: 64px;
+  text-align: center;
+  display: flex
+;
+  justify-content: center;
+  height: 48px;
+  margin:10px 0px
+}
+
+
+@media (max-width: 765px) {
+
+
+.addToCartButtonDisabled , .addToCartButton{
+max-width:100%
+}
+
+.rightPanel , .rightPanelCnt {
+ width:calc(100% - 48px);
+ max-width:calc(100% - 48px)
+}
+
 }
