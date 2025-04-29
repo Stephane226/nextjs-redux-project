@@ -25,6 +25,7 @@ import styles from './mobileMenu.module.css';
 import Link from 'next/link';
 
 
+
 interface SubmenuState {
   [key: string]: boolean;
 }
@@ -37,6 +38,7 @@ const MobileMenu: React.FC = () => {
   });
 
   const { products, loading, error } = useSelector((state: RootState) => state.products);
+  const basketCount = useSelector((state: RootState) => state.basket.count);
 
   const toggleDrawer = () => setOpen(!open);
   const toggleSubmenu = (key: string) => setSubmenu(prev => ({ ...prev, [key]: !prev[key] }));
@@ -128,7 +130,7 @@ const MobileMenu: React.FC = () => {
       {/* Icons */}
       <Box className={styles.rightIcons}>
         <IconButton className={styles.iconWrapper}>
-          <Badge badgeContent={1} color="success">
+          <Badge badgeContent={basketCount} color="success">
             <ShoppingCartIcon sx={{ fontSize: 28 }} />
           </Badge>
         </IconButton>

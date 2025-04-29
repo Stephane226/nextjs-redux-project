@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { incrementBasket } from './basketSlice';
 
 //base url for fetchss..
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL_VERIFY_PRICE;
@@ -25,7 +26,7 @@ export const verifyPacketPrice = createAsyncThunk(
   '/verifyPacketPrice',
   async (
     { packetData, token }: { packetData: { packet: { _id: string; count: number }[]; totalPrice: number }; token: string },
-    { rejectWithValue }
+    { rejectWithValue , dispatch }
   ) => {
     try {
     
@@ -39,6 +40,11 @@ export const verifyPacketPrice = createAsyncThunk(
           },
         }
       );
+       // now we increment if succss...
+      if (response.data.success) {
+        dispatch(incrementBasket());
+      }
+
       console.log(response.data)
       return response.data;
 
