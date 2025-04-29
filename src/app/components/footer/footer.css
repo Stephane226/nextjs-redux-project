@@ -35,14 +35,12 @@
 
 .footer-title {
   font-size: 24px;
-  font-family: 'Gordita', sans-serif;
   font-weight: 400;
 }
 
 .footer-text {
   margin-bottom: 16px;
   font-size: 14px;
-  font-family: 'Gordita', sans-serif;
   font-weight: 400;
   line-height: 1.6;
 }
@@ -71,22 +69,32 @@
 .footer-button {
   border-radius: 16px !important;
   background-color: white !important;
-  width: 88px !important;
-  height: 48px !important;
+ 
+  height: 56px !important;
   padding-right: 16px !important;
   padding-bottom: 10px !important;
-  padding-left: 16px !important;
+  padding-left: 12px !important;
   color: black !important;
   text-transform: none !important;
   font-size: 14px !important;
+  border-radius: 64px !important;
+    width: 100px !important;
+}
+
+.footer-button:focus {
+  outline: 2px solid white !important;
+  outline-offset: 2px; 
 }
 
 
-@media (min-width: 600px) {
+
+@media (min-width: 765px) {
   .footer-form {
     flex-direction: row;
   }
 }
+
+
 
 .footer-input .MuiOutlinedInput-root {
   background-color: transparent;
@@ -104,13 +112,11 @@
 .footer-caption {
   margin-top: 8px;
   font-size: 12px;
-  font-family: 'Gordita', sans-serif;
   font-weight: 400;
 }
 
 .footer-subtitle {
   font-size: 16px;
-  font-family: 'Gordita', sans-serif;
   font-weight: 400;
 }
 
@@ -123,7 +129,6 @@
 
 .footer-link {
   font-size: 14px;
-  font-family: 'Gordita', sans-serif;
   font-weight: 400;
   line-height: 1.6;
 }
@@ -144,7 +149,7 @@ color:#FFFFFF80;
 }
 
 .footer-bottom {
-  border-top: 1px solid grey;
+  border-top: 1px solid #FFFFFF1F;
   padding-top: 24px;
   text-align: center;
 
@@ -196,7 +201,7 @@ color:#FFFFFF80;
 
   .footer-column.large {
     width: 100%;
-    max-width: 500px;
+   
   }
 
   .footer-form {
@@ -206,7 +211,7 @@ color:#FFFFFF80;
 
   .footer-input .MuiOutlinedInput-root {
     width: 100%;
-    max-width: 362px;
+   
   }
 
   .footer-bottom {
@@ -231,5 +236,31 @@ color:#FFFFFF80;
     width: 64px;
     height: auto;
   }
+
+  .footer-input{
+    width:100%
+  }
 }
 
+
+@media (max-width: 765px) {
+  .footer-form {
+  
+    max-width:100%
+  }
+
+  .footer-form {
+    width: calc(100% - 24px);
+}
+
+.footer-button {
+  width:100%!important;
+  border-radius:64px !important;
+  margin-top:10px  !important;
+  margin-bottom:20px  !important;
+}
+
+.footer-payment {
+  margin-top:10px
+}
+  }
