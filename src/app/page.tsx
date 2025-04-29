@@ -1,7 +1,7 @@
 import Image from "next/image";
-import PacketsPage from "./(page)/packets/page";
+import ProfilePage from "./(page)/profile/page";
 export default function Home() {
   return (
-   <PacketsPage />
+   <ProfilePage />
   );
 }

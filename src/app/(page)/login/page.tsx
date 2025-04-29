@@ -29,7 +29,7 @@ const LoginPage = () => {
   useEffect(() => {
     if (token) {
       dispatch(fetchProfile());
-      router.push('/verify-price');
+      router.push('/');
     } 
   }, [token, dispatch, router]);
 

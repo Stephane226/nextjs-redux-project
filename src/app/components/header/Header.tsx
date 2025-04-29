@@ -42,21 +42,21 @@ const Header = () => {
         sx={{ backgroundColor: '#F7F6F5', position: 'relative' }}
          >
         {/* Logo */}
-        <Typography variant="h6" color="orange" sx={{ fontWeight: 'bold' }}>
+        <Typography variant="h6" color="#CE7328" sx={{ fontWeight: 'bold' }}>
           beije.
         </Typography>
 
         {/* Desktop Navbar */}
         <Box className="desktop-navbar" display="flex" gap={4} alignItems="center">
           <Box onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} sx={{ position: 'relative' }}>
-            <Button sx={{ color: 'black', fontWeight: 'bold' }}>
+            <Button sx={{ color: 'black', fontWeight: 'bold' ,textTransform : "lowercase"}}>
               Tüm Ürünler
             </Button>
           </Box>
-          <Button sx={{ color: 'black' }}>Biz Kimiz?</Button>
-          <Button sx={{ color: 'black' }}>Bağış Kültürü</Button>
-          <Button sx={{ color: 'black' }}>Regl Testi!</Button>
-          <Button sx={{ color: 'black' }}>Kendi Paketini Oluştur</Button>
+          <Button sx={{ color: 'black' , textTransform : "lowercase" }}>Biz Kimiz?</Button>
+          <Button sx={{ color: 'black' , textTransform : "lowercase"  }}>Bağış Kültürü</Button>
+          <Button sx={{ color: 'black' , textTransform : "lowercase"  }}>Regl Testi!</Button>
+          <Button sx={{ color: 'black' , textTransform : "lowercase"  }}>Kendi Paketini Oluştur</Button>
         </Box>
 
         {/* Mobile Navbar (Menu + Icons) */}
